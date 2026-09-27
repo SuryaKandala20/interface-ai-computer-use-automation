@@ -1,0 +1,10 @@
+{
+  "allowed_origins": ["http://127.0.0.1:8765"],
+  "allowed_path_patterns": ["^/t/(fvcu|harbor)/"],
+  "blocked_path_patterns": ["^/__", "/logout"],
+  "allowed_actions": ["navigate", "fill", "select", "click", "extract"],
+  "irreversible_patterns": ["\\bsubmit\\b", "\\bconfirm\\b", "\\bpost\\b", "\\btransfer\\b", "\\bdelete\\b", "\\bremove\\b", "close account", "\\bapprove\\b", "\\bdisburse\\b", "\\bwire\\b"],
+  "irreversible_mode": "require_approval",
+  "max_discovery_steps": 30,
+  "max_discovery_seconds": 600
+}

@@ -1,0 +1,46 @@
+{
+  "id": "ledgerline-core@7",
+  "product": "ledgerline-core",
+  "versions": ">=7.0,<8.0",
+  "pii_labels": ["Member Name", "Name", "SSN", "Date of Birth", "Address", "Phone"],
+  "irreversible_labels": ["^Submit Request$"],
+  "outcomes": [
+    {
+      "id": "session_expired", "kind": "recoverable", "code": "SESSION_EXPIRED",
+      "when": {"kind": "text_visible", "text": "Your session has expired"},
+      "message": "Operator session expired; sign on again and redo the flow.",
+      "recovery": {"action": "restart", "max_attempts": 2}
+    },
+    {
+      "id": "system_notice", "kind": "recoverable", "code": "SYSTEM_NOTICE_INTERSTITIAL",
+      "when": {"kind": "text_visible", "text": "System Notice"},
+      "message": "Broadcast notice interstitial; acknowledge and continue.",
+      "recovery": {"action": "dismiss", "target": {"role": "button", "name": "Acknowledge"}, "max_attempts": 3}
+    },
+    {
+      "id": "member_not_found", "kind": "business", "code": "MEMBER_NOT_FOUND",
+      "when": {"kind": "text_visible", "text": "NO RECORDS FOUND FOR MEMBER"},
+      "message": "No member exists with that member number."
+    },
+    {
+      "id": "permission_denied", "kind": "business", "code": "PERMISSION_DENIED",
+      "when": {"kind": "text_visible", "text": "ACCESS DENIED"},
+      "message": "The operator account is not permitted to view this record."
+    },
+    {
+      "id": "validation_error", "kind": "business", "code": "VALIDATION_ERROR",
+      "when": {"kind": "text_visible", "text": "ERROR \\d{4}:", "match": "regex"},
+      "message": "The application rejected an input value."
+    },
+    {
+      "id": "sign_on_failed", "kind": "failure", "code": "AUTH_FAILED",
+      "when": {"kind": "text_visible", "text": "SIGN ON FAILED"},
+      "message": "Tenant credentials were rejected by the application."
+    },
+    {
+      "id": "app_error", "kind": "failure", "code": "APP_ERROR",
+      "when": {"kind": "text_visible", "text": "Application Error|ORA-\\d{5}", "match": "regex"},
+      "message": "The application reported an internal error."
+    }
+  ]
+}

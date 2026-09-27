@@ -1,0 +1,526 @@
+{
+  "schema_version": "1.0",
+  "id": "ledgerline.member.open_subaccount",
+  "version": "1.0.0",
+  "title": "Open member sub-account and capture confirmation number",
+  "description": "Signs on to LedgerLine Core, searches a member by member number, opens the Open Sub-Account form, fills account type, nickname and initial deposit, submits the request (irreversible; requires approval) and returns the confirmation number. Use when a new sub-account must be opened for an existing member.",
+  "app": {
+    "product": "ledgerline-core",
+    "versions": ">=7.0,<8.0",
+    "surface": "legacy_web",
+    "profile": "ledgerline-core@7"
+  },
+  "entry_url": "{{tenant.base_url}}/login",
+  "idempotent": false,
+  "side_effects": "irreversible",
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "Member number to open the sub-account for (e.g. 10234)",
+      "required": true,
+      "pattern": "^\\d{1,12}$",
+      "sensitivity": "internal"
+    },
+    {
+      "name": "account_type",
+      "type": "string",
+      "description": "Sub-account product type as listed in the Account Type dropdown (Money Market, Holiday Club, Share Certificate)",
+      "required": true,
+      "sensitivity": "internal"
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "description": "Nickname/description for the new sub-account",
+      "required": true,
+      "sensitivity": "internal"
+    },
+    {
+      "name": "deposit",
+      "type": "decimal",
+      "description": "Initial deposit amount, numeric with two decimals (e.g. 250.00)",
+      "required": true,
+      "sensitivity": "internal"
+    }
+  ],
+  "secrets": [
+    {
+      "name": "app.operator_id",
+      "description": "Tenant-bound credential 'app.operator_id' (resolved at run time)"
+    },
+    {
+      "name": "app.password",
+      "description": "Tenant-bound credential 'app.password' (resolved at run time)"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "confirmation_number",
+      "type": "string",
+      "description": "Confirmation number of the newly opened sub-account",
+      "sensitivity": "internal"
+    }
+  ],
+  "steps": [
+    {
+      "id": "open_entry",
+      "intent": "Open the application sign-on page",
+      "action": "navigate",
+      "url": "{{tenant.base_url}}/login",
+      "risk": "safe",
+      "expect": {
+        "kind": "control_present",
+        "target": {
+          "role": "textbox",
+          "name": "Operator ID",
+          "name_match": "exact"
+        }
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "fill_operator_id",
+      "intent": "Enter operator ID to sign on to LedgerLine Core",
+      "action": "fill",
+      "target": {
+        "primary": {
+          "role": "textbox",
+          "name": "Operator ID",
+          "name_match": "exact"
+        },
+        "fallbacks": [
+          {
+            "role": "textbox",
+            "name_match": "exact",
+            "native_id": "opid"
+          }
+        ],
+        "rationale": "textbox identified by its visual-label 'Operator ID' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'opid' (part of the server's form contract, stable across skins)."
+      },
+      "value": "{{secrets.app.operator_id}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "fill_password",
+      "intent": "Enter operator password to sign on",
+      "action": "fill",
+      "target": {
+        "primary": {
+          "role": "password",
+          "name": "Password",
+          "name_match": "exact"
+        },
+        "fallbacks": [
+          {
+            "role": "password",
+            "name_match": "exact",
+            "native_id": "pwd"
+          }
+        ],
+        "rationale": "password identified by its visual-label 'Password' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'pwd' (part of the server's form contract, stable across skins)."
+      },
+      "value": "{{secrets.app.password}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_sign_on",
+      "intent": "Submit sign-on credentials to enter the core system",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "button",
+          "name": "Sign On",
+          "name_match": "exact"
+        },
+        "fallbacks": [],
+        "rationale": "button identified by its content 'Sign On' - what an operator sees; legacy page has no ids/test-ids."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Operator Home",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_member_inquiry",
+      "intent": "Open Member Inquiry to look up the member and access sub-account functions",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "link",
+          "name": "Member Inquiry",
+          "name_match": "exact",
+          "frame": "nav"
+        },
+        "fallbacks": [
+          {
+            "role": "link",
+            "name": "Member Inquiry",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "link identified by its content 'Member Inquiry' - what an operator sees; legacy page has no ids/test-ids. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Member Inquiry",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "fill_member_no",
+      "intent": "Enter the member number to look up the member record",
+      "action": "fill",
+      "target": {
+        "primary": {
+          "role": "textbox",
+          "name": "Member No.",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "textbox",
+            "name_match": "exact",
+            "frame": "main",
+            "native_id": "mid"
+          },
+          {
+            "role": "textbox",
+            "name": "Member No.",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "textbox identified by its visual-label 'Member No.' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'mid' (part of the server's form contract, stable across skins). Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "value": "{{inputs.member_id}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_search",
+      "intent": "Search for the member record",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "button",
+          "name": "Search",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "button",
+            "name": "Search",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "button identified by its content 'Search' - what an operator sees; legacy page has no ids/test-ids. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Search Results",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_select",
+      "intent": "Select the member {{inputs.member_id}} record to open their account overview",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "link",
+          "name": "Select",
+          "name_match": "exact",
+          "frame": "main",
+          "row": "{{inputs.member_id}}"
+        },
+        "fallbacks": [
+          {
+            "role": "link",
+            "name": "Select",
+            "name_match": "exact",
+            "row": "{{inputs.member_id}}"
+          }
+        ],
+        "rationale": "link identified by its content 'Select' - what an operator sees; legacy page has no ids/test-ids. Scoped to the table row containing the input parameter. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Member Account Summary",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_open_sub_account",
+      "intent": "Open the sub-account creation form for this member",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "link",
+          "name": "Open Sub-Account",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "link",
+            "name": "Open Sub-Account",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "link identified by its content 'Open Sub-Account' - what an operator sees; legacy page has no ids/test-ids. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Open Sub-Account",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "select_account_type",
+      "intent": "Choose the requested account type for the new sub-account",
+      "action": "select",
+      "target": {
+        "primary": {
+          "role": "combobox",
+          "name": "Account Type",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "combobox",
+            "name_match": "exact",
+            "frame": "main",
+            "native_id": "atype"
+          },
+          {
+            "role": "combobox",
+            "name": "Account Type",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "combobox identified by its visual-label 'Account Type' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'atype' (part of the server's form contract, stable across skins). Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "value": "{{inputs.account_type}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "fill_nickname",
+      "intent": "Enter the requested nickname for the new sub-account",
+      "action": "fill",
+      "target": {
+        "primary": {
+          "role": "textbox",
+          "name": "Nickname",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "textbox",
+            "name_match": "exact",
+            "frame": "main",
+            "native_id": "nick"
+          },
+          {
+            "role": "textbox",
+            "name": "Nickname",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "textbox identified by its visual-label 'Nickname' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'nick' (part of the server's form contract, stable across skins). Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "value": "{{inputs.nickname}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "fill_initial_deposit",
+      "intent": "Enter the initial deposit amount for the new sub-account",
+      "action": "fill",
+      "target": {
+        "primary": {
+          "role": "textbox",
+          "name": "Initial Deposit",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "textbox",
+            "name_match": "exact",
+            "frame": "main",
+            "native_id": "dep"
+          },
+          {
+            "role": "textbox",
+            "name": "Initial Deposit",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "textbox identified by its visual-label 'Initial Deposit' - what an operator sees; legacy page has no ids/test-ids. Fallback: form field name 'dep' (part of the server's form contract, stable across skins). Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "value": "{{inputs.deposit}}",
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_continue",
+      "intent": "Continue to the review/confirmation step of the sub-account opening",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "button",
+          "name": "Continue",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "button",
+            "name": "Continue",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "button identified by its content 'Continue' - what an operator sees; legacy page has no ids/test-ids. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "safe",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Review Sub-Account Request",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "click_submit_request",
+      "intent": "Submit the sub-account opening request (irreversible — requires approval); goal requires submitting and reading the confirmation number",
+      "action": "click",
+      "target": {
+        "primary": {
+          "role": "button",
+          "name": "Submit Request",
+          "name_match": "exact",
+          "frame": "main"
+        },
+        "fallbacks": [
+          {
+            "role": "button",
+            "name": "Submit Request",
+            "name_match": "exact"
+          }
+        ],
+        "rationale": "button identified by its content 'Submit Request' - what an operator sees; legacy page has no ids/test-ids. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "risk": "irreversible",
+      "expect": {
+        "kind": "text_visible",
+        "text": "Sub-Account Opened",
+        "match": "contains",
+        "frame": "main"
+      },
+      "timeout_ms": 10000,
+      "source": "agent"
+    },
+    {
+      "id": "extract_cnf_40117",
+      "intent": "The goal requires reading the confirmation number from the confirmation screen",
+      "action": "extract",
+      "target": {
+        "primary": {
+          "role": "cell",
+          "name_match": "exact",
+          "frame": "main",
+          "row": "Confirmation No.",
+          "column_index": 1
+        },
+        "fallbacks": [
+          {
+            "role": "cell",
+            "name_match": "exact",
+            "row": "Confirmation No.",
+            "column_index": 1
+          }
+        ],
+        "rationale": "Value cell located by its row label 'Confirmation No.' and position 1; cell content is data and never used for targeting. Last fallback ignores the frame, tolerating layout (frameset) changes."
+      },
+      "extract": {
+        "output": "confirmation_number",
+        "parse": "text"
+      },
+      "risk": "safe",
+      "timeout_ms": 10000,
+      "source": "agent"
+    }
+  ],
+  "outcomes": [],
+  "success": {
+    "kind": "all_of",
+    "conditions": [
+      {
+        "kind": "text_visible",
+        "text": "Sub-Account Opened",
+        "match": "contains",
+        "frame": "main"
+      },
+      {
+        "kind": "control_present",
+        "target": {
+          "role": "cell",
+          "name_match": "exact",
+          "frame": "main",
+          "row": "Confirmation No.",
+          "column_index": 1
+        }
+      }
+    ]
+  },
+  "approval": {
+    "status": "draft"
+  },
+  "provenance": {
+    "recorded_at": "2026-09-26T19:04:18Z",
+    "recorded_by": "discovery-agent",
+    "model": "claude-opus-5",
+    "discovery_run_id": "20260926-140327-discovery-798b8d",
+    "source_tenant": "fvcu",
+    "goal": "Signed on, looked up member {{inputs.member_id}}, opened a new {{inputs.account_type}} sub-account nicknamed '{{inputs.nickname}}' with a ${{inputs.deposit}} initial deposit, submitted the request, and extracted confirmation number CNF-40117.",
+    "human_steps": 0
+  },
+  "fingerprint": "sha256:67c7a4b5b67e9f594f7cba04c314ec8a371380836ed4ae44a0d619ac14626511"
+}

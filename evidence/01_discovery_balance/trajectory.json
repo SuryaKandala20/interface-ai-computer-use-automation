@@ -1,0 +1,546 @@
+[
+  {
+    "n": 1,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the operator ID to sign on to LedgerLine Core",
+    "control": {
+      "ref": "f0e0",
+      "role": "textbox",
+      "name": "Operator ID",
+      "name_source": "visual-label",
+      "enabled": true,
+      "native_id": "opid",
+      "row": [
+        "Operator ID:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 1,
+      "row_index": 1
+    },
+    "value_kind": "secret",
+    "value_ref": "app.operator_id",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 2,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the operator password to sign on",
+    "control": {
+      "ref": "f0e1",
+      "role": "password",
+      "name": "Password",
+      "name_source": "visual-label",
+      "enabled": true,
+      "native_id": "pwd",
+      "row": [
+        "Password:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 1,
+      "row_index": 2
+    },
+    "value_kind": "secret",
+    "value_ref": "app.password",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 3,
+    "source": "agent",
+    "action": "click",
+    "reason": "Submit the sign-on form to enter the core application",
+    "control": {
+      "ref": "f0e2",
+      "role": "button",
+      "name": "Sign On",
+      "name_source": "content",
+      "enabled": true,
+      "row": [
+        ""
+      ],
+      "col_index": 0,
+      "table": 1,
+      "row_index": 3
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/home",
+        [
+          "Operator Home"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 4,
+    "source": "agent",
+    "action": "click",
+    "reason": "Open the Member Inquiry function to search for the member",
+    "control": {
+      "ref": "f2e0",
+      "role": "link",
+      "name": "Member Inquiry",
+      "name_source": "content",
+      "frame": "nav",
+      "enabled": true
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/home",
+        [
+          "Operator Home"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 5,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the member number to look up",
+    "control": {
+      "ref": "f3e0",
+      "role": "textbox",
+      "name": "Member No.",
+      "name_source": "visual-label",
+      "frame": "main",
+      "enabled": true,
+      "native_id": "mid",
+      "row": [
+        "Member No.:",
+        "",
+        ""
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 0
+    },
+    "value_kind": "param",
+    "value_ref": "member_id",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 6,
+    "source": "agent",
+    "action": "click",
+    "reason": "Run the member search to display the member's accounts",
+    "control": {
+      "ref": "f3e1",
+      "role": "button",
+      "name": "Search",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "Member No.:",
+        "",
+        ""
+      ],
+      "col_index": 2,
+      "table": 0,
+      "row_index": 0
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry/results?mid=10234",
+        [
+          "Search Results"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 7,
+    "source": "agent",
+    "action": "click",
+    "reason": "Open the member record to view their account list",
+    "control": {
+      "ref": "f3e0",
+      "role": "link",
+      "name": "Select",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "10234",
+        "[PII:Name]",
+        "01 MAIN",
+        "Select"
+      ],
+      "col_index": 3,
+      "table": 0,
+      "row_index": 1
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry/results?mid=10234",
+        [
+          "Search Results"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/member?mid=10234",
+        [
+          "Member Account Summary"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 8,
+    "source": "agent",
+    "action": "extract",
+    "reason": "The goal asks for the available balance of the Share Savings account",
+    "control": {
+      "ref": "f3e28",
+      "role": "cell",
+      "name": "$12,425.18",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "S01",
+        "Share Savings",
+        "OPEN",
+        "$12,450.18",
+        "$12,425.18"
+      ],
+      "column": "Available Balance",
+      "col_index": 4,
+      "table": 1,
+      "row_index": 2
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": {
+      "output": "share_savings_available_balance",
+      "type": "decimal",
+      "description": "Available balance of the member's Share Savings account (suffix S01)",
+      "row_label": "Share Savings"
+    },
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/member?mid=10234",
+        [
+          "Member Account Summary"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/member?mid=10234",
+        [
+          "Member Account Summary"
+        ]
+      ]
+    ]
+  }
+]

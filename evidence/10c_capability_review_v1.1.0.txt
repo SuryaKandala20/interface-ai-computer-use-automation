@@ -1,0 +1,50 @@
+$ python -m cua show C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json
+
+--- stdout ---
+Read member's Share Savings available balance  [ledgerline.member.get_share_savings_balance@1.1.0]  status=draft
+  Signs on to LedgerLine Core 7.2, searches Member Inquiry by member number, opens the member account summary, and extracts the Available Balance of the Share Savings account. Use when an agent needs a member's Share Savings available balance. Read-only; no changes are posted.
+  app: ledgerline-core >=7.0,<8.0 (legacy_web), profile ledgerline-core@7
+  side effects: none   idempotent: True   fingerprint: sha256:b1d443fe22c84dc8709ba9991a767f5b69fe13451bb72bbefa61384d305d45f7
+  inputs:  member_id:string /^\d{1,12}$/
+  secrets: app.operator_id, app.password
+  outputs: share_savings_available_balance:decimal (internal)
+
+  steps:
+    1. open_entry: navigate {{tenant.base_url}}/login
+       intent: Open the application sign-on page
+       expect: textbox 'Operator ID' present
+    2. fill_operator_id: fill textbox 'Operator ID' <- {{secrets.app.operator_id}}
+       intent: Enter the operator ID to sign on to LedgerLine Core
+       fallbacks: textbox [native_id=opid]
+    3. fill_password: fill password 'Password' <- {{secrets.app.password}}
+       intent: Enter the operator password to sign on
+       fallbacks: password [native_id=pwd]
+    4. click_sign_on: click button 'Sign On'
+       intent: Submit the sign-on form to enter the core application
+       expect: text 'Operator Home' visible in frame 'main'
+    5. click_member_inquiry: click link 'Member Inquiry' (frame nav)
+       intent: Open the Member Inquiry function to search for the member
+       fallbacks: link 'Member Inquiry'
+       expect: text 'Member Inquiry' visible in frame 'main'
+    6. fill_member_no: fill textbox 'Member No.' (frame main) <- {{inputs.member_id}}
+       intent: Enter the member number to look up
+       fallbacks: textbox [native_id=mid] (frame main); textbox 'Member No.'
+    7. click_search: click button 'Search' (frame main)
+       intent: Run the member search to display the member's accounts
+       fallbacks: button 'Search'
+       expect: text 'Search Results' visible in frame 'main'
+    8. click_select: click link 'Select' in row '{{inputs.member_id}}' (frame main)
+       intent: Open the member record to view their account list
+       fallbacks: link 'Select' in row '{{inputs.member_id}}'
+       expect: text 'Member Account Summary' visible in frame 'main'
+    9. extract_share_savings: extract cell in row 'Share Savings' under 'Available Balance' (frame main) -> outputs.share_savings_available_balance (decimal)
+       intent: The goal asks for the available balance of the Share Savings account
+       fallbacks: cell in row 'Share Savings' under 'Available Balance'
+
+  success: text 'Member Account Summary' visible in frame 'main' AND cell in row 'Share Savings' under 'Available Balance' (frame main) present
+  capability outcome rules: CONCURRENT_SESSION_WARNING(recoverable)
+  + shared rules from profile ledgerline-core@7
+
+  recorded 2026-09-26 19:03:23+00:00 by discovery-agent (claude-opus-5) on tenant fvcu, run 20260926-140259-discovery-413e6c, human steps: 0
+
+--- stderr ---

@@ -1,0 +1,7 @@
+$ python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json --reviewer reviewer.akhan --min-stability 0.9 --notes Re-approved with stability gate
+
+--- stdout ---
+stability gate: 5 runs, 100% success, consistent
+approved ledgerline.member.get_share_savings_balance@1.0.0 (fingerprint sha256:90a2847ca1041ab5f003b1137e8da4d5d6681802a111ea519da00f999af627e0)
+
+--- stderr ---

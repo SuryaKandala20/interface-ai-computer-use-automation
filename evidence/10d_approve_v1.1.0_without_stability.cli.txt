@@ -1,0 +1,7 @@
+$ python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json --reviewer reviewer.akhan --min-stability 0.9
+
+--- stdout ---
+stability gate: no stability report for this exact artifact (run: python -m cua stability ...)
+refusing approval
+
+--- stderr ---

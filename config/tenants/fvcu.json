@@ -1,0 +1,9 @@
+{
+  "tenant_id": "fvcu",
+  "display_name": "First Valley Credit Union",
+  "product": "ledgerline-core",
+  "product_version": "7.2",
+  "base_url": "http://127.0.0.1:8765/t/fvcu",
+  "secrets": {"app.operator_id": "env:FVCU_OPERATOR_ID", "app.password": "env:FVCU_OPERATOR_PASSWORD"},
+  "overrides": {}
+}

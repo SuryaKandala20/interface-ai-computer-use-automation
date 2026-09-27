@@ -1,0 +1,8 @@
+$ python -m cua accept-proposal proposals\prop-iv-140614-20ea.json C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json --reviewer reviewer.akhan
+
+--- stdout ---
+wrote ledgerline.member.get_share_savings_balance@1.1.0 (draft) -> C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json
+  added rule: learned_concurrent_session_warning  when text 'Concurrent Session Warning' visible in frame 'main' -> dismiss button 'Continue Anyway' (frame main)
+  next: python -m cua show C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json   then   python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json --reviewer <you>
+
+--- stderr ---

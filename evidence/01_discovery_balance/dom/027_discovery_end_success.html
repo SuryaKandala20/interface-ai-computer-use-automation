@@ -1,0 +1,50 @@
+<!-- frame '' http://127.0.0.1:8765/t/fvcu/main -->
+<html><head><title>First Valley Credit Union - LedgerLine Core</title></head>
+<frameset rows="58,*" border="0">
+  <frame name="banner" src="/t/fvcu/banner" scrolling="no" noresize="">
+  <frameset cols="170,*">
+    <frame name="nav" src="/t/fvcu/nav">
+    <frame name="main" src="/t/fvcu/home">
+  </frameset>
+</frameset></html>
+
+<!-- frame 'banner' http://127.0.0.1:8765/t/fvcu/banner -->
+<html><head><title>banner</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#1d3f72}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><table width="100%"><tbody><tr><td bgcolor="#1d3f72" data-cua-ref="f1e0">
+<font color="white" size="4"><b>First Valley Credit Union</b></font>
+<font color="#dddddd"> &nbsp; LedgerLine Core 7.2 &nbsp; | &nbsp; Operator: [SECRET:app.operator_id]</font>
+</td></tr></tbody></table></body></html>
+
+<!-- frame 'nav' http://127.0.0.1:8765/t/fvcu/nav -->
+<html><head><title>nav</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#e4e8ef}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><b>Functions</b><br><br>
+<a href="/t/fvcu/inquiry" target="main" data-cua-ref="f2e0">Member Inquiry</a><br>
+<a href="/t/fvcu/home" target="main" data-cua-ref="f2e1">Home</a><br><br>
+<a href="/t/fvcu/logout" target="_top" data-cua-ref="f2e2">Sign Off</a></body></html>
+
+<!-- frame 'main' http://127.0.0.1:8765/t/fvcu/member?mid=10234 -->
+<html><head><title>member</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#ffffff}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><font size="4"><b>Member Account Summary</b></font><br><br>
+<table cellpadding="3" cellspacing="0" border="0">
+<tbody><tr><td data-cua-ref="f3e2"><b>Member No.</b></td><td data-cua-ref="f3e3">10234</td></tr>
+<tr><td data-cua-ref="f3e4"><b>Member Name</b></td><td data-cua-ref="f3e5">[PII:Name]</td></tr>
+<tr><td data-cua-ref="f3e6"><b>SSN</b></td><td data-cua-ref="f3e7">[PII:SSN]</td></tr>
+<tr><td data-cua-ref="f3e8"><b>Date of Birth</b></td><td data-cua-ref="f3e9">[PII:Date of Birth]</td></tr>
+<tr><td data-cua-ref="f3e10"><b>Address</b></td><td data-cua-ref="f3e11">[PII:Address]</td></tr>
+<tr><td data-cua-ref="f3e12"><b>Phone</b></td><td data-cua-ref="f3e13">[PII:Phone]</td></tr>
+</tbody></table><br>
+<table border="1" cellpadding="4" cellspacing="0">
+<tbody><tr class="hdr"><td data-cua-ref="f3e14">Suffix</td><td data-cua-ref="f3e15">Description</td><td data-cua-ref="f3e16">Status</td><td data-cua-ref="f3e17">Current Balance</td><td data-cua-ref="f3e18">Available Balance</td></tr>
+<tr><td data-cua-ref="f3e19">S00</td><td data-cua-ref="f3e20">Base Share</td><td data-cua-ref="f3e21">OPEN</td><td align="right" data-cua-ref="f3e22">$25.00</td><td align="right" data-cua-ref="f3e23">$25.00</td></tr><tr><td data-cua-ref="f3e24">S01</td><td data-cua-ref="f3e25">Share Savings</td><td data-cua-ref="f3e26">OPEN</td><td align="right" data-cua-ref="f3e27">$12,450.18</td><td align="right" data-cua-ref="f3e28">$12,425.18</td></tr><tr><td data-cua-ref="f3e29">D10</td><td data-cua-ref="f3e30">Share Draft Checking</td><td data-cua-ref="f3e31">OPEN</td><td align="right" data-cua-ref="f3e32">$1,832.40</td><td align="right" data-cua-ref="f3e33">$1,832.40</td></tr>
+</tbody></table><br>
+<a href="/t/fvcu/subaccount?mid=10234" data-cua-ref="f3e0">Open Sub-Account</a> &nbsp;
+<a href="/t/fvcu/inquiry" data-cua-ref="f3e1">New Search</a></body></html>

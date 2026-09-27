@@ -1,0 +1,7 @@
+$ python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json --reviewer reviewer.akhan --min-stability 0.9 --notes Reviewed learned rule learned_concurrent_session_warning
+
+--- stdout ---
+stability gate: 5 runs, 100% success, consistent
+approved ledgerline.member.get_share_savings_balance@1.1.0 (fingerprint sha256:b1d443fe22c84dc8709ba9991a767f5b69fe13451bb72bbefa61384d305d45f7)
+
+--- stderr ---

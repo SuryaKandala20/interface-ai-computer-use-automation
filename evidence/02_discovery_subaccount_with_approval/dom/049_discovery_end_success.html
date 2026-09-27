@@ -1,0 +1,40 @@
+<!-- frame '' http://127.0.0.1:8765/t/fvcu/main -->
+<html><head><title>First Valley Credit Union - LedgerLine Core</title></head>
+<frameset rows="58,*" border="0">
+  <frame name="banner" src="/t/fvcu/banner" scrolling="no" noresize="">
+  <frameset cols="170,*">
+    <frame name="nav" src="/t/fvcu/nav">
+    <frame name="main" src="/t/fvcu/home">
+  </frameset>
+</frameset></html>
+
+<!-- frame 'banner' http://127.0.0.1:8765/t/fvcu/banner -->
+<html><head><title>banner</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#1d3f72}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><table width="100%"><tbody><tr><td bgcolor="#1d3f72" data-cua-ref="f1e0">
+<font color="white" size="4"><b>First Valley Credit Union</b></font>
+<font color="#dddddd"> &nbsp; LedgerLine Core 7.2 &nbsp; | &nbsp; Operator: [SECRET:app.operator_id]</font>
+</td></tr></tbody></table></body></html>
+
+<!-- frame 'nav' http://127.0.0.1:8765/t/fvcu/nav -->
+<html><head><title>nav</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#e4e8ef}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><b>Functions</b><br><br>
+<a href="/t/fvcu/inquiry" target="main" data-cua-ref="f2e0">Member Inquiry</a><br>
+<a href="/t/fvcu/home" target="main" data-cua-ref="f2e1">Home</a><br><br>
+<a href="/t/fvcu/logout" target="_top" data-cua-ref="f2e2">Sign Off</a></body></html>
+
+<!-- frame 'main' http://127.0.0.1:8765/t/fvcu/subaccount/submit -->
+<html><head><title>confirmation</title>
+<style>body{font-family:Verdana,Arial;font-size:12px;margin:6px;background:#ffffff}
+td{font-size:12px} .hdr td{background:#c9d3e0;font-weight:bold}
+.err{color:#a00000;font-weight:bold} .btn{font-size:12px}</style></head>
+<body><font size="4"><b>Sub-Account Opened</b></font><br><br>
+Request accepted.<br><br><table cellpadding="3">
+<tbody><tr><td data-cua-ref="f3e1"><b>Confirmation No.</b></td><td data-cua-ref="f3e2">CNF-40117</td></tr>
+<tr><td data-cua-ref="f3e3"><b>Account Type</b></td><td data-cua-ref="f3e4">Money Market</td></tr></tbody></table><br>
+<a href="/t/fvcu/member?mid=10234" data-cua-ref="f3e0">Return to Member</a></body></html>

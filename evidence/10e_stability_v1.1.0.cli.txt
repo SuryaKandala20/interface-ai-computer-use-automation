@@ -1,0 +1,37 @@
+$ python -m cua stability C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.1.0.json --tenant fvcu --input member_id=10235 --runs 5
+
+--- stdout ---
+{
+  "capability": "ledgerline.member.get_share_savings_balance@1.1.0",
+  "fingerprint": "sha256:b1d443fe22c84dc8709ba9991a767f5b69fe13451bb72bbefa61384d305d45f7",
+  "measured_at": "2026-09-26T14:06:49",
+  "runs": 5,
+  "statuses": {
+    "succeeded": 5
+  },
+  "success_rate": 1.0,
+  "consistent": true,
+  "distinct_behaviours": 1,
+  "outputs_seen": [
+    "{\"share_savings_available_balance\": \"3210.55\"}"
+  ],
+  "errors": {},
+  "recoveries": {},
+  "locator_fallbacks": 0,
+  "duration_ms": {
+    "min": 4267,
+    "median": 4354,
+    "max": 4582
+  },
+  "run_ids": [
+    "20260926-140622-replay-689383",
+    "20260926-140627-replay-a62e7e",
+    "20260926-140633-replay-0ea51c",
+    "20260926-140639-replay-f216b8",
+    "20260926-140644-replay-4866f8"
+  ]
+}
+
+report: runs\stability\20260926-140649_ledgerline.member.get_share_savings_balance_1.1.0.json
+
+--- stderr ---

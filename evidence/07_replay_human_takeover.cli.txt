@@ -1,0 +1,125 @@
+$ python -m cua replay C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json --tenant fvcu --input member_id=10235 --chaos unknown_dialog_once --on-failure escalate
+
+--- stdout ---
+{
+  "run_id": "20260926-141425-replay-5c44c0",
+  "capability": "ledgerline.member.get_share_savings_balance@1.0.0",
+  "tenant": "fvcu",
+  "status": "succeeded",
+  "outputs": {
+    "share_savings_available_balance": "3210.55"
+  },
+  "outcome": null,
+  "error": null,
+  "recoveries": [],
+  "interventions": [
+    {
+      "id": "iv-141441-eb0f",
+      "kind": "takeover",
+      "reason_code": "CHECKPOINT_FAILED",
+      "step_id": "click_select",
+      "status": "resolved",
+      "resolution": "step_done",
+      "operator": "operator.jlee",
+      "human_actions": [
+        {
+          "at": "2026-09-26T19:14:43+00:00",
+          "source": "console",
+          "type": "click",
+          "text": "Continue Anyway",
+          "box": {
+            "x": 176,
+            "y": 131,
+            "width": 119.015625,
+            "height": 21
+          }
+        },
+        {
+          "at": "2026-09-26T19:14:43+00:00",
+          "source": "recorder",
+          "type": "click",
+          "frame": "main",
+          "role": "button",
+          "name": "Continue Anyway",
+          "value": null,
+          "row": null,
+          "column": null,
+          "native_id": null,
+          "while_holder": "human"
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "steps": [
+    {
+      "id": "open_entry",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 644,
+      "locator_strategy": null
+    },
+    {
+      "id": "fill_operator_id",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 258,
+      "locator_strategy": 0
+    },
+    {
+      "id": "fill_password",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 251,
+      "locator_strategy": 0
+    },
+    {
+      "id": "click_sign_on",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 665,
+      "locator_strategy": 0
+    },
+    {
+      "id": "click_member_inquiry",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 657,
+      "locator_strategy": 0
+    },
+    {
+      "id": "fill_member_no",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 277,
+      "locator_strategy": 0
+    },
+    {
+      "id": "click_search",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 599,
+      "locator_strategy": 0
+    },
+    {
+      "id": "click_select",
+      "status": "done_by_human",
+      "attempts": 1,
+      "duration_ms": 23,
+      "locator_strategy": null
+    },
+    {
+      "id": "extract_share_savings",
+      "status": "done",
+      "attempts": 1,
+      "duration_ms": 270,
+      "locator_strategy": 0
+    }
+  ],
+  "duration_ms": 18284,
+  "evidence_dir": "runs\\20260926-141425-replay-5c44c0"
+}
+
+--- stderr ---
+
+[escalation] takeover requested (CHECKPOINT_FAILED) - intervention iv-141441-eb0f. Open the operator console (python -m cua operator) to take over.

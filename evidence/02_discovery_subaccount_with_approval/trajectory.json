@@ -1,0 +1,1006 @@
+[
+  {
+    "n": 1,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter operator ID to sign on to LedgerLine Core",
+    "control": {
+      "ref": "f0e0",
+      "role": "textbox",
+      "name": "Operator ID",
+      "name_source": "visual-label",
+      "enabled": true,
+      "native_id": "opid",
+      "row": [
+        "Operator ID:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 1,
+      "row_index": 1
+    },
+    "value_kind": "secret",
+    "value_ref": "app.operator_id",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 2,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter operator password to sign on",
+    "control": {
+      "ref": "f0e1",
+      "role": "password",
+      "name": "Password",
+      "name_source": "visual-label",
+      "enabled": true,
+      "native_id": "pwd",
+      "row": [
+        "Password:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 1,
+      "row_index": 2
+    },
+    "value_kind": "secret",
+    "value_ref": "app.password",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 3,
+    "source": "agent",
+    "action": "click",
+    "reason": "Submit sign-on credentials to enter the core system",
+    "control": {
+      "ref": "f0e2",
+      "role": "button",
+      "name": "Sign On",
+      "name_source": "content",
+      "enabled": true,
+      "row": [
+        ""
+      ],
+      "col_index": 0,
+      "table": 1,
+      "row_index": 3
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/login",
+        [
+          "First Valley Credit Union"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/home",
+        [
+          "Operator Home"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 4,
+    "source": "agent",
+    "action": "click",
+    "reason": "Open Member Inquiry to look up the member and access sub-account functions",
+    "control": {
+      "ref": "f2e0",
+      "role": "link",
+      "name": "Member Inquiry",
+      "name_source": "content",
+      "frame": "nav",
+      "enabled": true
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/home",
+        [
+          "Operator Home"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 5,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the member number to look up the member record",
+    "control": {
+      "ref": "f3e0",
+      "role": "textbox",
+      "name": "Member No.",
+      "name_source": "visual-label",
+      "frame": "main",
+      "enabled": true,
+      "native_id": "mid",
+      "row": [
+        "Member No.:",
+        "",
+        ""
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 0
+    },
+    "value_kind": "param",
+    "value_ref": "member_id",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 6,
+    "source": "agent",
+    "action": "click",
+    "reason": "Search for the member record",
+    "control": {
+      "ref": "f3e1",
+      "role": "button",
+      "name": "Search",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "Member No.:",
+        "",
+        ""
+      ],
+      "col_index": 2,
+      "table": 0,
+      "row_index": 0
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry",
+        [
+          "Member Inquiry"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry/results?mid=10234",
+        [
+          "Search Results"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 7,
+    "source": "agent",
+    "action": "click",
+    "reason": "Select the member 10234 record to open their account overview",
+    "control": {
+      "ref": "f3e0",
+      "role": "link",
+      "name": "Select",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "10234",
+        "[PII:Name]",
+        "01 MAIN",
+        "Select"
+      ],
+      "col_index": 3,
+      "table": 0,
+      "row_index": 1
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/inquiry/results?mid=10234",
+        [
+          "Search Results"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/member?mid=10234",
+        [
+          "Member Account Summary"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 8,
+    "source": "agent",
+    "action": "click",
+    "reason": "Open the sub-account creation form for this member",
+    "control": {
+      "ref": "f3e0",
+      "role": "link",
+      "name": "Open Sub-Account",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/member?mid=10234",
+        [
+          "Member Account Summary"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 9,
+    "source": "agent",
+    "action": "select",
+    "reason": "Choose the requested account type for the new sub-account",
+    "control": {
+      "ref": "f3e0",
+      "role": "combobox",
+      "name": "Account Type",
+      "name_source": "visual-label",
+      "frame": "main",
+      "value": "-- select --",
+      "options": [
+        "-- select --",
+        "Money Market",
+        "Holiday Club",
+        "Share Certificate"
+      ],
+      "enabled": true,
+      "native_id": "atype",
+      "row": [
+        "Account Type:",
+        "-- select -- Money Market Holiday Club Share Certificate"
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 1
+    },
+    "value_kind": "param",
+    "value_ref": "account_type",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 10,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the requested nickname for the new sub-account",
+    "control": {
+      "ref": "f3e1",
+      "role": "textbox",
+      "name": "Nickname",
+      "name_source": "visual-label",
+      "frame": "main",
+      "enabled": true,
+      "native_id": "nick",
+      "row": [
+        "Nickname:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 2
+    },
+    "value_kind": "param",
+    "value_ref": "nickname",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 11,
+    "source": "agent",
+    "action": "fill",
+    "reason": "Enter the initial deposit amount for the new sub-account",
+    "control": {
+      "ref": "f3e2",
+      "role": "textbox",
+      "name": "Initial Deposit",
+      "name_source": "visual-label",
+      "frame": "main",
+      "enabled": true,
+      "native_id": "dep",
+      "row": [
+        "Initial Deposit:",
+        ""
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 3
+    },
+    "value_kind": "param",
+    "value_ref": "deposit",
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 12,
+    "source": "agent",
+    "action": "click",
+    "reason": "Continue to the review/confirmation step of the sub-account opening",
+    "control": {
+      "ref": "f3e3",
+      "role": "button",
+      "name": "Continue",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "",
+        ""
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 4
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount?mid=10234",
+        [
+          "Open Sub-Account"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount/review?mid=10234&atype=Money+Market&nick=Rainy+Day&dep=250.00",
+        [
+          "Review Sub-Account Request"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 13,
+    "source": "agent",
+    "action": "click",
+    "reason": "Submit the sub-account opening request (irreversible \u2014 requires approval); goal requires submitting and reading the confirmation number",
+    "control": {
+      "ref": "f3e0",
+      "role": "button",
+      "name": "Submit Request",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": null,
+    "risk": "irreversible",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount/review?mid=10234&atype=Money+Market&nick=Rainy+Day&dep=250.00",
+        [
+          "Review Sub-Account Request"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount/submit",
+        [
+          "Sub-Account Opened"
+        ]
+      ]
+    ]
+  },
+  {
+    "n": 14,
+    "source": "agent",
+    "action": "extract",
+    "reason": "The goal requires reading the confirmation number from the confirmation screen",
+    "control": {
+      "ref": "f3e2",
+      "role": "cell",
+      "name": "CNF-40117",
+      "name_source": "content",
+      "frame": "main",
+      "enabled": true,
+      "row": [
+        "Confirmation No.",
+        "CNF-40117"
+      ],
+      "col_index": 1,
+      "table": 0,
+      "row_index": 0
+    },
+    "value_kind": null,
+    "value_ref": null,
+    "extract": {
+      "output": "confirmation_number",
+      "type": "text",
+      "description": "Confirmation number of the newly opened sub-account",
+      "row_label": "Confirmation No."
+    },
+    "risk": "safe",
+    "url": null,
+    "before": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount/submit",
+        [
+          "Sub-Account Opened"
+        ]
+      ]
+    ],
+    "after": [
+      [
+        "",
+        "/t/fvcu/main",
+        []
+      ],
+      [
+        "banner",
+        "/t/fvcu/banner",
+        [
+          "First Valley Credit Union"
+        ]
+      ],
+      [
+        "nav",
+        "/t/fvcu/nav",
+        []
+      ],
+      [
+        "main",
+        "/t/fvcu/subaccount/submit",
+        [
+          "Sub-Account Opened"
+        ]
+      ]
+    ]
+  }
+]

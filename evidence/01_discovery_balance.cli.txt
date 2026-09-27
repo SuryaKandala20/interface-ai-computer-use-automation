@@ -1,0 +1,11 @@
+$ python -m cua discover --tenant fvcu --capability-id ledgerline.member.get_share_savings_balance --param member_id=10234 --goal Look up member 10234 and read the available balance of their Share Savings account
+
+--- stdout ---
+
+Discovery success: Signed on to LedgerLine Core, ran Member Inquiry for member 10234, selected the member record, and read the Share Savings (suffix S01) available balance: $12,425.18 (current balance $12,450.18).
+  evidence: runs\20260926-140259-discovery-413e6c   llm usage: {'input_tokens': 18, 'output_tokens': 1282, 'cache_read_input_tokens': 31637, 'llm_calls': 9}
+  capability: ledgerline.member.get_share_savings_balance@1.0.0 -> C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json  (status: draft)
+  review:  python -m cua show C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json
+  approve: python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.get_share_savings_balance\1.0.0.json --reviewer <you>
+
+--- stderr ---

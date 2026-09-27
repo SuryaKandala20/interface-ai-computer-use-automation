@@ -1,0 +1,13 @@
+$ python -m cua discover --tenant fvcu --capability-id ledgerline.member.open_subaccount --param member_id=10234 --param account_type=Money Market --param nickname=Rainy Day --param deposit=250.00 --goal Open a new Money Market sub-account for member 10234 with nickname 'Rainy Day' and an initial deposit of 250.00, submit it, and read the confirmation number
+
+--- stdout ---
+
+Discovery success: Signed on, looked up member 10234, opened a new Money Market sub-account nicknamed 'Rainy Day' with a $250.00 initial deposit, submitted the request, and extracted confirmation number CNF-40117.
+  evidence: runs\20260926-140327-discovery-798b8d   llm usage: {'input_tokens': 30, 'output_tokens': 2044, 'cache_read_input_tokens': 87714, 'llm_calls': 15}
+  capability: ledgerline.member.open_subaccount@1.0.0 -> C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.open_subaccount\1.0.0.json  (status: draft)
+  review:  python -m cua show C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.open_subaccount\1.0.0.json
+  approve: python -m cua approve C:\Users\ASUS\Documents\Interface.ai\capabilities\ledgerline.member.open_subaccount\1.0.0.json --reviewer <you>
+
+--- stderr ---
+
+[escalation] approval requested - intervention iv-140405-01e6. Open the operator console (python -m cua operator).

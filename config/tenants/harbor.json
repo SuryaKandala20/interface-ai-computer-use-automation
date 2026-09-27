@@ -1,0 +1,29 @@
+{
+  "tenant_id": "harbor",
+  "display_name": "Harbor Point CU",
+  "product": "ledgerline-core",
+  "product_version": "7.4",
+  "base_url": "http://127.0.0.1:8765/t/harbor",
+  "secrets": {"app.operator_id": "env:HARBOR_OPERATOR_ID", "app.password": "env:HARBOR_OPERATOR_PASSWORD"},
+  "overrides": {
+    "ledgerline.member.get_share_savings_balance": {
+      "steps": {
+        "fill_member_no": {"target": {"primary": {"name": "Member #"}}},
+        "click_search": {"target": {"primary": {"name": "Find"}, "fallbacks": [{"role": "button", "name": "Find"}]}},
+        "click_select": {
+          "target": {"primary": {"name": "Open"}, "fallbacks": [{"role": "link", "name": "Open", "row": "{{inputs.member_id}}"}]},
+          "expect": {"text": "Member Summary"}
+        },
+        "extract_share_savings": {
+          "target": {"primary": {"column": "Avail Bal"}, "fallbacks": [{"role": "cell", "row": "Share Savings", "column": "Avail Bal"}]}
+        }
+      },
+      "success": {
+        "conditions": [
+          {"kind": "text_visible", "text": "Member Summary", "frame": "main"},
+          {"kind": "control_present", "target": {"role": "cell", "row": "Share Savings", "column": "Avail Bal", "frame": "main"}}
+        ]
+      }
+    }
+  }
+}
